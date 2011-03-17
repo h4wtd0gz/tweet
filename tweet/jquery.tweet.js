@@ -118,11 +118,11 @@
       var proto = ('https:' == document.location.protocol ? 'https:' : 'http:');
       var count = (s.fetch === null) ? s.count : s.fetch;
       if (s.list) {
-        return proto+"//"+s.twitter_api_url+"/1/"+s.username[0]+"/lists/"+s.list+"/statuses.json?per_page="+count+"&callback=?";
+        return proto+"//"+s.twitter_api_url+"/"+s.username[0]+"/lists/"+s.list+"/statuses.json?per_page="+count+"&callback=?";
       } else if (s.favorites) {
         return proto+"//"+s.twitter_api_url+"/favorites/"+s.username[0]+".json?count="+s.count+"&callback=?";
       } else if (s.query === null && s.username.length == 1) {
-        return proto+'//'+s.twitter_api_url+'/1/statuses/user_timeline.json?screen_name='+s.username[0]+'&count='+count+(s.retweets ? '&include_rts=1' : '')+'&callback=?';
+        return proto+'//'+s.twitter_api_url+'/statuses/user_timeline.json?screen_name='+s.username[0]+'&count='+count+(s.retweets ? '&include_rts=1' : '')+'&callback=?';
       } else {
         var query = (s.query || 'from:'+s.username.join(' OR from:'));
         return proto+'//'+s.twitter_search_url+'/search.json?&q='+encodeURIComponent(query)+'&rpp='+count+'&callback=?';
